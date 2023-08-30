@@ -1,0 +1,10 @@
+.form-avatar {
+ width: 430px;
+ height: 272px;
+ padding: 0 36px;
+ transform: translateX(-50%);
+}
+
+.form-avatar.block {
+ display: block;
+}

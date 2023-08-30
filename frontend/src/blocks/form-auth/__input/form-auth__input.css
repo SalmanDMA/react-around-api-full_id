@@ -1,0 +1,11 @@
+.form-auth__input {
+ width: 100%;
+ border-bottom: 2px solid #fff;
+ background-color: transparent;
+ padding-bottom: 13px;
+ color: #fff;
+}
+
+.form-auth__input:focus {
+ outline: none;
+}

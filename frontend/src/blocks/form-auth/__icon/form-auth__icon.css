@@ -1,0 +1,10 @@
+.form-auth__icon {
+ position: absolute;
+ top: 40%;
+ right: 10px;
+ transform: translateY(-50%);
+ cursor: pointer;
+}
+.form-auth__icon svg {
+ font-size: 20px;
+}

@@ -1,0 +1,31 @@
+.alert {
+ margin-bottom: 40px;
+ width: 100%;
+ background-color: #051b11;
+ border: 2px solid #0f5132;
+ border-radius: 10px;
+ transition: opacity 1s ease;
+ animation-name: fadeIn;
+ animation-duration: 1s;
+ animation-fill-mode: backwards;
+}
+
+.alert.close {
+ opacity: 0;
+}
+
+@keyframes fadeIn {
+ 0% {
+  opacity: 0;
+ }
+ 100% {
+  opacity: 1;
+ }
+}
+
+@media screen and (max-width: 320px) {
+ .alert {
+  width: 80%;
+  margin: 0 auto 40px;
+ }
+}

@@ -1,0 +1,13 @@
+.form-confirm-container__button {
+ color: #fff;
+ background-color: #000;
+ cursor: pointer;
+ padding: 14px 0;
+ font-family: 'Inter';
+ font-style: normal;
+ font-weight: 400;
+ font-size: 18px;
+ line-height: 22px;
+ width: 100%;
+ margin: 0;
+}

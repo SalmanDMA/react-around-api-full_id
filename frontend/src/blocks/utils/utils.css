@@ -1,0 +1,13 @@
+/* utils */
+.hover,
+.hover-icon {
+	cursor: pointer;
+}
+.hover:hover {
+	opacity: 0.8;
+}
+
+.hover-icon:hover {
+	opacity: 0.6;
+}
+/* utils end */

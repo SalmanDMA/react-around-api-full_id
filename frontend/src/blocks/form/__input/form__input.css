@@ -1,0 +1,17 @@
+.form__input {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	padding-bottom: 13px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
+}
+
+.form__input:focus {
+	outline: none;
+}
+
+@media screen and (max-width: 320px) {
+	.form__input {
+		padding-bottom: 9px;
+	}
+}

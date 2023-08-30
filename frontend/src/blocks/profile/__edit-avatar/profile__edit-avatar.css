@@ -1,0 +1,13 @@
+.profile__edit-avatar {
+ position: relative;
+ cursor: pointer;
+}
+
+.profile__edit-avatar:hover > img {
+ opacity: 0.2;
+}
+
+.profile__edit-avatar:hover > button {
+ display: block;
+ opacity: 1;
+}

@@ -1,0 +1,30 @@
+.pop-up {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ z-index: 3;
+ transform: translate(-50%, -50%);
+ display: none;
+ transition: opacity 1s ease;
+ animation-name: zoomIn;
+ animation-duration: 1s;
+ animation-fill-mode: backwards;
+}
+
+.pop-up.close {
+ opacity: 0;
+}
+
+.pop-up.block {
+ display: block;
+}
+
+@keyframes zoomIn {
+ 0% {
+  opacity: 0;
+  transform: scale3d(0.3, 0.3, 0.3);
+ }
+ 50% {
+  opacity: 1;
+ }
+}

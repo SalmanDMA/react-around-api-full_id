@@ -1,0 +1,20 @@
+.pop-up__icon {
+ position: absolute;
+ top: -8%;
+ right: -5%;
+ background: url(../../../../public/images/icon/CloseIcon.png) no-repeat;
+ background-size: cover;
+ width: 40px;
+ height: 40px;
+}
+
+@media screen and (max-width: 320px) {
+ .pop-up__icon {
+  position: absolute;
+  background-size: cover;
+  top: -8%;
+  right: -10%;
+  width: 25px;
+  height: 25px;
+ }
+}

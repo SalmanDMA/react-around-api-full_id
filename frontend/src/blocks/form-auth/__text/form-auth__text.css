@@ -1,0 +1,9 @@
+.form-auth__text {
+ font-size: 14px;
+ text-align: center;
+}
+
+.form-auth__text a {
+ color: #fff;
+ text-decoration: none;
+}

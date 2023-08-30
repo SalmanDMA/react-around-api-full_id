@@ -1,0 +1,15 @@
+.card__icon {
+ margin-right: 21px;
+ margin-left: 10px;
+ background: url(../../../../public/images/icon/heart.svg) no-repeat;
+ width: 30px;
+ height: 20px;
+}
+
+.card__icon_active {
+ margin-right: 21px;
+ margin-left: 10px;
+ background: url(../../../../public/images/icon/heartBlack.svg) no-repeat;
+ width: 30px;
+ height: 20px;
+}

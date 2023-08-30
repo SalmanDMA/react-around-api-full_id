@@ -1,0 +1,16 @@
+.form__icon {
+ position: absolute;
+ top: -10%;
+ right: -10%;
+ background: url(../../../../public/images/icon/CloseIcon.png) no-repeat;
+ width: 40px;
+ height: 40px;
+}
+
+@media screen and (max-width: 320px) {
+ .form__icon {
+  position: absolute;
+  top: -15%;
+  right: 0;
+ }
+}

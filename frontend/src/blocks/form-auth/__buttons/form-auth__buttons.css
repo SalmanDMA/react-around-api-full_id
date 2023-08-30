@@ -1,0 +1,6 @@
+.form-auth__buttons {
+ display: flex;
+ flex-direction: column;
+ gap: 15px;
+ padding-top: 216px;
+}

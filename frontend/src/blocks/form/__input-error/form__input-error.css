@@ -1,0 +1,25 @@
+.form__input-error {
+ opacity: 1;
+ font-style: normal;
+ font-weight: 400;
+ font-size: 12px;
+ line-height: 15px;
+ position: absolute;
+ left: 10%;
+ top: 15%;
+ transition: 0.3s ease;
+ color: red;
+ max-width: 311px;
+}
+
+.form__input-error:nth-of-type(2) {
+ top: 45%;
+ /* color: red; */
+}
+
+@media screen and (max-width: 320px) {
+ .form__input-error {
+  max-width: 238px;
+  font-size: 10px;
+ }
+}

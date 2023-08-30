@@ -1,0 +1,33 @@
+.header__title {
+ padding-bottom: 41px;
+ position: relative;
+ width: 30%;
+}
+
+.header__title::after {
+ position: absolute;
+ content: 'The U.S.';
+ top: 0;
+ margin-left: 7px;
+ font-weight: 200;
+ font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+ .header__title {
+  width: 60%;
+ }
+}
+
+@media screen and (max-width: 320px) {
+ .header__title {
+  margin-left: 27px;
+  padding-bottom: 32px;
+  font-size: 1.7rem;
+ }
+
+ .header__title::after {
+  margin-left: 3px;
+  font-size: 0.7rem;
+ }
+}

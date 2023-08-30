@@ -1,0 +1,10 @@
+.form-auth {
+ width: 358px;
+ min-height: 100vh;
+}
+
+@media screen and (max-width: 320px) {
+ .form-auth {
+  max-width: 232px;
+ }
+}

@@ -1,0 +1,13 @@
+.profile__edit {
+ width: 24px;
+ height: 24px;
+ background: url(../../../../public/images/button/EditButton.png) no-repeat;
+}
+
+@media screen and (max-width: 320px) {
+ .profile__edit {
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+ }
+}

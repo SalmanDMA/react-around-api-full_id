@@ -1,0 +1,7 @@
+.alert__text {
+	overflow: hidden;
+	white-space: normal;
+	text-overflow: ellipsis;
+	padding: 20px 30px;
+	color: #75b798;
+}
