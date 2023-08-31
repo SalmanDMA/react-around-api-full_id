@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const likeSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+});
+
 const cardSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -23,13 +31,7 @@ const cardSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
-  likes: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      default: [],
-    },
-  ],
+  likes: [likeSchema], // Menggunakan skema sub-likeSchema untuk array likes
   createdAt: {
     type: Date,
     default: Date.now,

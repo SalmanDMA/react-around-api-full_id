@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
 const { errors } = require('celebrate');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
@@ -11,15 +13,32 @@ const app = express();
 // Menghubungkan ke MongoDB
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/aroundb');
+  await mongoose.connect(process.env.MONGODB_URI);
 }
 main().catch((err) => console.log(err));
 
 // Middleware untuk memproses body JSON pada request
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
+// Middleware untuk memproses cors
+app.use(cors());
+app.options('*', cors());
+
 // Middleware untuk menangani request logger
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Server akan crash saat ini');
+  }, 0);
+});
 
 // Menggunakan router
 app.use(usersRouter);
@@ -39,7 +58,7 @@ app.use((req, res) => {
 // Middleware untuk menangani error umum
 app.use(errorHandler);
 
-const { PORT = 3000 } = process.env;
+const { PORT } = process.env;
 app.listen(PORT, () => {
   console.log(`Server berjalan di port ${PORT}`);
 });

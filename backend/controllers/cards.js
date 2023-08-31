@@ -12,6 +12,7 @@ const getAllCards = async (req, res) => {
 
 // Create a new card
 const createCard = async (req, res) => {
+  console.log(req.user);
   const { _id } = req.user;
   const { name, link } = req.body;
   console.log('User ID:', _id);
@@ -51,7 +52,7 @@ const likeCard = async (req, res) => {
   try {
     const card = await Card.findByIdAndUpdate(
       req.params.cardId,
-      { $addToSet: { likes: req.user._id } },
+      { $addToSet: { likes: { userId: req.user._id } } },
       { new: true },
     );
     if (!card) {
@@ -68,7 +69,7 @@ const dislikeCard = async (req, res) => {
   try {
     const card = await Card.findByIdAndUpdate(
       req.params.cardId,
-      { $pull: { likes: req.user._id } },
+      { $pull: { likes: { userId: req.user._id } } },
       { new: true },
     );
     if (!card) {

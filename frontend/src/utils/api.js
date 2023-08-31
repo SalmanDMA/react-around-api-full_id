@@ -126,7 +126,7 @@ class Api {
 const token = localStorage.getItem('jwt');
 
 const api = new Api({
- baseUrl: 'http://api.around.mooo.com',
+ baseUrl: 'https://api.around.mooo.com',
  headers: {
   Authorization: `Bearer ${token}`,
   'Content-Type': 'application/json',

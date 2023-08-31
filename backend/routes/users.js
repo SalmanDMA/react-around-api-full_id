@@ -1,6 +1,7 @@
 const express = require('express');
 const { celebrate, Joi } = require('celebrate');
 const {
+  getUserByMe,
   getAllUsers,
   getUserById,
   createUser,
@@ -15,6 +16,9 @@ const { validateURL } = require('../middleware/validations');
 
 const router = express.Router();
 
+// Get /users/me
+router.get('/users/me', authMiddleware, getUserByMe);
+
 // GET /users
 router.get('/users', authMiddleware, getAllUsers);
 
@@ -28,7 +32,7 @@ router.post('/signup', celebrate({
     password: Joi.string().required(),
     name: Joi.string(),
     about: Joi.string(),
-    avatar: Joi.string().required().custom(validateURL),
+    avatar: Joi.string().custom(validateURL),
   }),
 }), createUser);
 

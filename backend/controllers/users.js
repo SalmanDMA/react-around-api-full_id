@@ -1,3 +1,4 @@
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { Joi } = require('celebrate');
@@ -19,6 +20,7 @@ const getUserProfile = async (req, res) => {
 
 // Get all users
 const getAllUsers = async (req, res) => {
+  console.log(req.headers, 'ini adalah getAllUsers');
   try {
     const users = await User.find();
     return res.json(users);
@@ -29,6 +31,7 @@ const getAllUsers = async (req, res) => {
 
 // Get a user by ID
 const getUserById = async (req, res) => {
+  console.log(req.headers, 'ini adalah getUserById');
   const { userId } = req.params;
   try {
     const user = await User.findById(userId).orFail(() => {
@@ -42,6 +45,17 @@ const getUserById = async (req, res) => {
       return res.status(error.statusCode).json({ error: error.message });
     }
     return res.status(500).json({ error: 'Error retrieving user' });
+  }
+};
+
+const getUserByMe = async (req, res) => {
+  const token = req.header('Authorization').split(' ')[1];
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.status(200).json(decoded);
+  } catch (error) {
+    console.error('Error checking token validity:', error);
+    res.status(401).json({ error: 'Token tidak valid' });
   }
 };
 
@@ -130,8 +144,12 @@ const login = async (req, res) => {
     if (passwordMatch) {
       const payload = {
         _id: user._id,
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
       };
-      const token = jwt.sign(payload, 'your-secret-key', { expiresIn: '7d' });
+      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d' });
       return res.json({ token });
     }
     return res.status(401).json({ error: 'Invalid email or password' });
@@ -195,6 +213,7 @@ module.exports = {
   getUserProfile,
   getAllUsers,
   getUserById,
+  getUserByMe,
   createUser,
   updateProfile,
   updateAvatar,
