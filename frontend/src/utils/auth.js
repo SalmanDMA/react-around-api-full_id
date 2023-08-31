@@ -1,6 +1,6 @@
 export const registerUser = async (email, password) => {
  try {
-  const response = await fetch('https://register.nomoreparties.co/signup', {
+  const response = await fetch('http://api.around.mooo.com/signup', {
    method: 'POST',
    headers: {
     'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export const registerUser = async (email, password) => {
 
 export const loginUser = async (email, password) => {
  try {
-  const response = await fetch('https://register.nomoreparties.co/signin', {
+  const response = await fetch('http://api.around.mooo.com/signin', {
    method: 'POST',
    headers: {
     'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export const loginUser = async (email, password) => {
 
 export const checkTokenValidity = async (token) => {
  try {
-  const response = await fetch('https://register.nomoreparties.co/users/me', {
+  const response = await fetch('http://api.around.mooo.com/users/me', {
    method: 'GET',
    headers: {
     'Content-Type': 'application/json',

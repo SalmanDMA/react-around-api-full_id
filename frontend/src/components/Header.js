@@ -13,7 +13,7 @@ export default function Header({ text, handleLogOut, dataUserToken, loggedIn, li
  return (
   <>
    <div className={`header__button-toggle ${showMenu ? 'show' : ''}`}>
-    {loggedIn && <p>{dataUserToken.data.email}</p>}
+    {loggedIn && <p>{dataUserToken.email}</p>}
     <button type='button' onClick={handleLogOut}>
      {text}
     </button>
@@ -23,7 +23,7 @@ export default function Header({ text, handleLogOut, dataUserToken, loggedIn, li
     {text === 'Logout' && (
      <>
       <div className='header__button'>
-       {loggedIn && <p>{dataUserToken.data.email}</p>}
+       {loggedIn && <p>{dataUserToken.email}</p>}
        <button type='button' onClick={handleLogOut}>
         {text}
        </button>

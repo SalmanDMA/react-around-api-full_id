@@ -75,6 +75,7 @@
 @import url(../blocks/card/__item/card__item.css);
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__icon-delete/card__icon-delete.css);
+@import url(../blocks/card/__icon-delete/_hidden/card__icon-delete_hidden.css);
 @import url(../blocks/card/__main-text/card__main-text.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__likes/card__likes.css);

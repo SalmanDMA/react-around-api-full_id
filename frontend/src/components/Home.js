@@ -138,12 +138,15 @@ function Home({ dataUserToken, handleLogOut, loggedIn }) {
  };
 
  const handleLikeClick = (card) => {
-  const isLiked = card.likes.some((like) => like._id === currentUser._id);
+  const isLiked = card.likes.some((like) => like.userId === currentUser._id);
+  console.log(currentUser._id, "crurrensuserid");
+  console.log(card, "isLiked");
 
   api
    .updateLikeCard(card._id, isLiked)
    .then((newCard) => {
-    setCardList((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+    console.log(newCard, "newCard");
+    setCardList((state) => state.map((c) => (c.userId === card._id ? newCard : c)));
    })
    .catch((error) => {
     console.log(error);
@@ -152,11 +155,13 @@ function Home({ dataUserToken, handleLogOut, loggedIn }) {
 
  const handleAddPlaceSubmit = (cardInfo) => {
   setIsLoading(true);
-
+  console.log(cardInfo, "============================");
   api
    .postNewCard(cardInfo)
    .then((newCard) => {
+    console.log(newCard, "newCard");
     setCardList([newCard, ...cardList]);
+    console.log(cardList, "cardList");
     inputJudul.current.value = '';
     inputTautanGambar.current.value = '';
     setIsLoading(false);
@@ -247,18 +252,29 @@ function Home({ dataUserToken, handleLogOut, loggedIn }) {
   // Periksa validitas input dalam konteks form yang bersangkutan
   const isValid = Array.from(formElement.querySelectorAll('.form__input')).every((input) => input.checkValidity());
 
+  const imageExtensionsRegex = /\.(jpg|jpeg|png|gif)$/i; // Regex untuk ekstensi gambar (tidak peduli huruf besar atau kecil)
+  
+  const inputName = inputElement.name; // Nama input untuk memeriksa tipe input
+  const inputValue = inputElement.value; // Nilai input
+
   if (!inputElement.checkValidity()) {
-   const errorMessage = inputElement.validationMessage;
-   errorElement.textContent = errorMessage;
-   buttonElement.current.classList.add('form__button_inactive');
+    const errorMessage = inputElement.validationMessage;
+    errorElement.textContent = errorMessage;
+    buttonElement.current.classList.add('form__button_inactive');
+  } else if ((inputName === 'inputTautanGambar' || inputName === 'inputAvatar') && !imageExtensionsRegex.test(inputValue)) {
+    errorElement.textContent = 'Tautan gambar harus memiliki ekstensi .jpg, .jpeg, .png, atau .gif';
+    buttonElement.current.classList.add('form__button_inactive');
   } else {
-   errorElement.textContent = '';
-   if (isValid) {
-    buttonElement.current.classList.remove('form__button_inactive');
-    setButtonDisabled(false);
-   }
+    errorElement.textContent = '';
+    if (isValid) {
+      buttonElement.current.classList.remove('form__button_inactive');
+      setButtonDisabled(false);
+    }
   }
- }
+}
+
+
+
 
  const handleOverlayClick = (e) => {
   if (

@@ -26,9 +26,9 @@ class Api {
     headers: this.headers,
    });
 
-   if (res.ok) {
-    return res.json();
-   }
+    const data = await res.json();
+    return data;
+
   } catch (err) {
    throw err;
   }
@@ -46,8 +46,9 @@ class Api {
    });
 
    if (res.ok) {
-    return res.json();
+    return res.json();    
    }
+   
   } catch (err) {
    throw err;
   }
@@ -56,7 +57,7 @@ class Api {
  async updateLikeCard(cardId, isLiked) {
   try {
    const method = isLiked ? 'DELETE' : 'PUT';
-   const res = await fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+   const res = await fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
     headers: this.headers,
     method,
    });
@@ -122,10 +123,12 @@ class Api {
  }
 }
 
+const token = localStorage.getItem('jwt');
+
 const api = new Api({
- baseUrl: 'https://around.nomoreparties.co/v1/web_idn_cohort_01',
+ baseUrl: 'http://api.around.mooo.com',
  headers: {
-  authorization: 'a55a2a11-c51d-4757-bac3-b5d796b811b7',
+  Authorization: `Bearer ${token}`,
   'Content-Type': 'application/json',
  },
 });

@@ -46,7 +46,7 @@ export default function Register({ handleRegister }) {
 
   try {
    const response = await handleRegister(email, password);
-   if (response.data) {
+   if (!response.error && response.user) {
     setShowSuccessTooltip(true);
    } else {
     setShowErrorTooltip(true);
