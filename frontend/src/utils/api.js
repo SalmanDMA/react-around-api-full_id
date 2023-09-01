@@ -9,7 +9,7 @@ class Api {
  async getUserInfo() {
   try {
    const res = await fetch(`${this.baseUrl}/users/me`, {
-    headers: this.headers,
+    headers: { ...this.headers, Authorization: `Bearer ${getToken()}` },
    });
 
    if (res.ok) {
@@ -23,12 +23,11 @@ class Api {
  async getInitialCards() {
   try {
    const res = await fetch(`${this.baseUrl}/cards`, {
-    headers: this.headers,
+    headers: { ...this.headers, Authorization: `Bearer ${getToken()}` },
    });
 
-    const data = await res.json();
-    return data;
-
+   const data = await res.json();
+   return data;
   } catch (err) {
    throw err;
   }
@@ -38,7 +37,7 @@ class Api {
   try {
    const res = await fetch(`${this.baseUrl}/cards`, {
     method: 'POST',
-    headers: this.headers,
+    headers: { ...this.headers, Authorization: `Bearer ${getToken()}` },
     body: JSON.stringify({
      name: data.inputJudul,
      link: data.inputTautanGambar,
@@ -46,9 +45,8 @@ class Api {
    });
 
    if (res.ok) {
-    return res.json();    
+    return res.json();
    }
-   
   } catch (err) {
    throw err;
   }
@@ -58,7 +56,7 @@ class Api {
   try {
    const method = isLiked ? 'DELETE' : 'PUT';
    const res = await fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
-    headers: this.headers,
+    headers: { ...this.headers, Authorization: `Bearer ${getToken()}` },
     method,
    });
 
@@ -74,7 +72,7 @@ class Api {
   try {
    const res = await fetch(`${this.baseUrl}/cards/${cardId}`, {
     method: 'DELETE',
-    headers: this.headers,
+    headers: { ...this.headers, Authorization: `Bearer ${getToken()}` },
    });
 
    if (res.ok) {
@@ -89,7 +87,7 @@ class Api {
   try {
    const res = await fetch(`${this.baseUrl}/users/me`, {
     method: 'PATCH',
-    headers: this.headers,
+    headers: { ...this.headers, Authorization: `Bearer ${getToken()}` },
     body: JSON.stringify({
      name: data.nameProfile,
      about: data.aboutProfile,
@@ -108,7 +106,7 @@ class Api {
   try {
    const res = await fetch(`${this.baseUrl}/users/me/avatar`, {
     method: 'PATCH',
-    headers: this.headers,
+    headers: { ...this.headers, Authorization: `Bearer ${getToken()}` },
     body: JSON.stringify({
      avatar: url.avatar,
     }),
@@ -123,12 +121,12 @@ class Api {
  }
 }
 
-const token = localStorage.getItem('jwt');
+const getToken = () => localStorage.getItem('jwt');
 
 const api = new Api({
- baseUrl: 'https://api.around.mooo.com',
+ baseUrl: 'http://localhost:3000',
  headers: {
-  Authorization: `Bearer ${token}`,
+  Authorization: `Bearer ${getToken()}`,
   'Content-Type': 'application/json',
  },
 });

@@ -5,7 +5,6 @@ export default function Card(props) {
  const currentUser = useContext(CurrentUserContext) || {};
  const isOwn = props.card.owner === currentUser._id;
  const isLiked = props.card.likes.some((like) => like.userId === currentUser._id);
- console.log(isLiked, "isLiked");
 
  return (
   <div className='card__item' key={props.card.id}>

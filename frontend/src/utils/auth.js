@@ -1,6 +1,6 @@
 export const registerUser = async (email, password) => {
  try {
-  const response = await fetch('https://api.around.mooo.com/signup', {
+  const response = await fetch('http://localhost:3000/signup', {
    method: 'POST',
    headers: {
     'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export const registerUser = async (email, password) => {
 
 export const loginUser = async (email, password) => {
  try {
-  const response = await fetch('https://api.around.mooo.com/signin', {
+  const response = await fetch('http://localhost:3000/signin', {
    method: 'POST',
    headers: {
     'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export const loginUser = async (email, password) => {
 
 export const checkTokenValidity = async (token) => {
  try {
-  const response = await fetch('https://api.around.mooo.com/users/me', {
+  const response = await fetch('http://localhost:3000/users/me', {
    method: 'GET',
    headers: {
     'Content-Type': 'application/json',

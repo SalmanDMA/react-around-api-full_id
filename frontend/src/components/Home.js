@@ -144,7 +144,7 @@ function Home({ dataUserToken, handleLogOut, loggedIn }) {
    .updateLikeCard(card._id, isLiked)
    .then((res) => {
     const newCard = res.card;
-    setCardList((state) => state.map((c) => (c.userId === card._id ? newCard : c)));
+    setCardList((state) => state.map((c) => (c._id === card._id ? newCard : c)));
    })
    .catch((error) => {
     console.log(error);
@@ -248,28 +248,25 @@ function Home({ dataUserToken, handleLogOut, loggedIn }) {
   const isValid = Array.from(formElement.querySelectorAll('.form__input')).every((input) => input.checkValidity());
 
   const imageExtensionsRegex = /\.(jpg|jpeg|png|gif)$/i; // Regex untuk ekstensi gambar (tidak peduli huruf besar atau kecil)
-  
+
   const inputName = inputElement.name; // Nama input untuk memeriksa tipe input
   const inputValue = inputElement.value; // Nilai input
 
   if (!inputElement.checkValidity()) {
-    const errorMessage = inputElement.validationMessage;
-    errorElement.textContent = errorMessage;
-    buttonElement.current.classList.add('form__button_inactive');
+   const errorMessage = inputElement.validationMessage;
+   errorElement.textContent = errorMessage;
+   buttonElement.current.classList.add('form__button_inactive');
   } else if ((inputName === 'inputTautanGambar' || inputName === 'inputAvatar') && !imageExtensionsRegex.test(inputValue)) {
-    errorElement.textContent = 'Tautan gambar harus memiliki ekstensi .jpg, .jpeg, .png, atau .gif';
-    buttonElement.current.classList.add('form__button_inactive');
+   errorElement.textContent = 'Tautan gambar harus memiliki ekstensi .jpg, .jpeg, .png, atau .gif';
+   buttonElement.current.classList.add('form__button_inactive');
   } else {
-    errorElement.textContent = '';
-    if (isValid) {
-      buttonElement.current.classList.remove('form__button_inactive');
-      setButtonDisabled(false);
-    }
+   errorElement.textContent = '';
+   if (isValid) {
+    buttonElement.current.classList.remove('form__button_inactive');
+    setButtonDisabled(false);
+   }
   }
-}
-
-
-
+ }
 
  const handleOverlayClick = (e) => {
   if (

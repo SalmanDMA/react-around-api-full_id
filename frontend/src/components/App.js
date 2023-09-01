@@ -47,8 +47,8 @@ function App() {
  };
 
  const handleLogOut = () => {
-  setLoggedIn(false);
   localStorage.removeItem('jwt');
+  setLoggedIn(false);
  };
 
  return (
