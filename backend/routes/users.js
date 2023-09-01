@@ -1,7 +1,6 @@
 const express = require('express');
 const { celebrate, Joi } = require('celebrate');
 const {
-  getUserByMe,
   getAllUsers,
   getUserById,
   createUser,
@@ -10,6 +9,7 @@ const {
   login,
   updateOtherUserProfile,
   deleteOtherCard,
+  getUserProfile,
 } = require('../controllers/users');
 const authMiddleware = require('../middleware/auth');
 const { validateURL } = require('../middleware/validations');
@@ -17,7 +17,7 @@ const { validateURL } = require('../middleware/validations');
 const router = express.Router();
 
 // Get /users/me
-router.get('/users/me', authMiddleware, getUserByMe);
+router.get('/users/me', authMiddleware, getUserProfile);
 
 // GET /users
 router.get('/users', authMiddleware, getAllUsers);

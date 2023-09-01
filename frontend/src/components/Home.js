@@ -139,13 +139,11 @@ function Home({ dataUserToken, handleLogOut, loggedIn }) {
 
  const handleLikeClick = (card) => {
   const isLiked = card.likes.some((like) => like.userId === currentUser._id);
-  console.log(currentUser._id, "crurrensuserid");
-  console.log(card, "isLiked");
 
   api
    .updateLikeCard(card._id, isLiked)
-   .then((newCard) => {
-    console.log(newCard, "newCard");
+   .then((res) => {
+    const newCard = res.card;
     setCardList((state) => state.map((c) => (c.userId === card._id ? newCard : c)));
    })
    .catch((error) => {
@@ -155,13 +153,10 @@ function Home({ dataUserToken, handleLogOut, loggedIn }) {
 
  const handleAddPlaceSubmit = (cardInfo) => {
   setIsLoading(true);
-  console.log(cardInfo, "============================");
   api
    .postNewCard(cardInfo)
    .then((newCard) => {
-    console.log(newCard, "newCard");
     setCardList([newCard, ...cardList]);
-    console.log(cardList, "cardList");
     inputJudul.current.value = '';
     inputTautanGambar.current.value = '';
     setIsLoading(false);

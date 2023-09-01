@@ -10,7 +10,9 @@
       "files": ["*.js"],
       "rules": {
         "import/no-dynamic-require": "off",
-        "no-unused-vars": ["error", { "argsIgnorePattern": "next" }]
+        "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
+        "prefer-destructuring": "off",
+        "no-undef-init": "off"
       }
     }
   ]
